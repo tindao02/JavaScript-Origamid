@@ -1,24 +1,15 @@
-const img = document.querySelector('img');
+const tabMenu     = document.querySelectorAll('.js-tabmenu li');
+const tabContent  = document.querySelectorAll('.js-tabconteudo section');
+tabContent[0].classList.add('ativo');
 
-// img.addEventListener('click', () => console.log('clicou'));
-const callback = function(event) {
-  console.log('clicou', event);
+if(tabMenu.length && tabContent.length) {
+  const activeTab = (index) => {
+    tabContent.forEach(section => section.classList.remove('ativo'));
+    tabContent[index].classList.add('ativo');
+    console.log(index);
+  }
+
+  tabMenu.forEach((itemMenu, index) => {
+    itemMenu.addEventListener('click', () => activeTab(index));
+  });
 }
-// img.addEventListener('click', callback);
-
-
-const animaisLista = document.querySelector('.animais-lista');
-const callbackLista = function(event) {
-  console.log(event.currentTarget);
-  console.log(event.target);
-  console.log(event.type);
-}
-// animaisLista.addEventListener('click', callbackLista);
-
-
-const linkExterno = document.querySelector('a[href^="http"');
-const handleLinkExterno = function(event) {
-  event.preventDefault();
- console.log('clicou');
-}
-linkExterno.addEventListener('click', handleLinkExterno);
